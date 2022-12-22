@@ -301,6 +301,43 @@ int main()
 //
 //cout<<bset3.flip()<<endl;
 
+//hacker rank problem (monk divides chocolates)
+
+int t;
+cin>>t;
+while(t--)
+{
+    int n;
+    cin>>n;
+    int k;
+    cin>>k;
+
+    multiset<long long>ms;
+
+    for(int i=0;i<n;i++)
+    {
+        long long  candy;
+        cin>>candy;
+        ms.insert(candy);
+    }
+    long long ans=0;
+
+    for(int i=0;i<k;i++)
+    {
+        auto it=(--ms.end());
+        long long  val=*it;
+        ans+=(val);
+        ms.erase(it);
+        ms.insert(val/2);
+
+
+
+    }
+
+    cout<<ans<<endl;
+
+}
+
 
 
 
