@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+double eps=1e-7;
+
+double multi(int p,double mid)
+{
+    double ans=1;
+    for(int i=0;i<p;i++)
+    {
+        ans*=mid;
+    }
+
+    return ans;
+}
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+
+    double n;
+    int p;
+    cin>>p;
+    cin>>n;
+    double high=n,low=1,mid;
+
+    while(high-low>eps)
+    {
+        mid=low+(high-low)/2;
+
+        if(multi(p,mid)>n)
+        {
+            high=mid;
+        }
+        else
+        {
+            low=mid;
+
+
+        }
+    }
+
+    cout<<setprecision(5)<<low<<"\n"<<high;
+
+return 0;
+
+
+
+}
