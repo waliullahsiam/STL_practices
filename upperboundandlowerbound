@@ -1,0 +1,95 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int lowerbound(vector<int>&vec,int val)
+{
+    int low=0;
+    int high=vec.size()-1;
+
+    while(high-low>1)
+    {
+        int mid=low+(high-low)/2;
+        if(vec[mid]<val)
+        {
+            low=mid+1;
+        }
+
+        else
+        {
+            high=mid;
+
+        }
+    }
+
+    if(vec[low]>=val)
+    {
+        return low;
+    }
+    else if(vec[high]>=val)
+    {
+        return high;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+int upperbound(vector<int>&vec,int val)
+{
+    int low=0;
+    int high=vec.size()-1;
+
+    while(high-low>1)
+    {
+        int mid=low+(high-low)/2;
+        if(vec[mid]<val)
+        {
+            low=mid+1;
+        }
+
+        else
+        {
+            high=mid;
+
+        }
+    }
+
+    if(vec[low]>val)
+    {
+        return low;
+    }
+    else if(vec[high]>val)
+    {
+        return high;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+int main()
+{
+
+
+//lower bound and upper bound using binary search mechanism
+
+    int n;
+    cin>>n;
+    vector<int>vec(n);
+
+    for(int i=0;i<n;i++)cin>>vec[i];
+    int element;
+    cin>>element;
+
+
+    int index=lowerbound(vec,element);
+
+    int index2=upperbound(vec,element);
+
+    cout<<"lower bound is at index "<<index<<"  and the value is "<<vec[index]<<endl;
+    cout<<"upper bound is at index "<<index2<<"  and the value is "<<vec[index2]<<endl;
+
+    return 0;
+}
